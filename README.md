@@ -226,7 +226,7 @@ Predicts anemia severity levels in children using demographic and health indicat
 
 ---
 
-## 📈 Skills Demonstrated
+## Skills Demonstrated
 
 ### 1. **Data Analysis & Preprocessing**
 
