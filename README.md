@@ -15,6 +15,7 @@ A curated collection of **3 high-impact machine learning projects** demonstratin
 | **Spotify Music Analysis** | Clustering & EDA | 28,680 tracks | K-Means, Genre Analysis | Music Analytics |
 | **Apartment Rent Prediction** | Regression | 10,000 listings | Geospatial, Feature Engineering | Real Estate Pricing |
 | **Anemia Classification** | Multi-class Classification | 33,924 patients | PCA, Random Forest | Healthcare Diagnosis |
+| **Fraud Detection** | Binary Classification | 8M+ transactions | SMOTE, Imbalanced Learning | Financial Security |
 
 ---
 
@@ -225,6 +226,148 @@ Predicts anemia severity levels in children using demographic and health indicat
 - Feature engineering & selection
 
 ---
+
+### 4. Financial Fraud Detection
+
+**Large-Scale Binary Classification for Financial Security**
+## Collaborators
+David Purdhome :  https://github.com/dairo95
+Alex AWORET : https://github.com/alex-aworet
+Kirstale MAYILA : https://github.com/Kris59-lab
+Big thanks to all of them 
+
+![Project Status](https://img.shields.io/badge/Status-Complete-success)
+![Difficulty](https://img.shields.io/badge/Difficulty-Advanced-red)
+
+#### Overview
+
+Detects fraudulent financial transactions in mobile money and banking systems using machine learning. This project combines two large synthetic datasets to build a robust fraud detection system capable of identifying suspicious patterns in real-time transaction data.
+
+#### Objectives
+
+- Build accurate fraud detection model for financial transactions
+- Handle massive imbalanced datasets (fraud is rare)
+- Identify transaction patterns indicative of fraud
+- Minimize false negatives (missing actual fraud)
+- Provide actionable insights for financial institutions
+
+#### Datasets
+
+**Combined Dataset**: 8,082,801 transactions from two sources
+
+**Dataset 1 - MomTSim (Mobile Money Simulator)**
+
+- **Size**: 1,720,181 transactions
+- **Source**: Mendeley Data
+- **Features**: Mobile money transactions (TRANSFER, PAYMENT, DEPOSIT)
+
+**Dataset 2 - PaySim (Payment Simulator)**
+
+- **Size**: 6,362,620 transactions  
+- **Source**: Kaggle Financial Fraud Detection
+- **Features**: Banking transactions (PAYMENT, TRANSFER, CASH_OUT, CASH_IN, DEBIT)
+
+**Combined Features** (9 attributes):
+
+- `transactionType`: Type of transaction
+- `amount`: Transaction amount
+- `initiator`: Originating account
+- `oldBalInitiator`: Balance before transaction (sender)
+- `newBalInitiator`: Balance after transaction (sender)
+- `recipient`: Destination account
+- `oldBalRecipient`: Balance before transaction (receiver)
+- `newBalRecipient`: Balance after transaction (receiver)
+- `isFraud`: Target variable (0=Legitimate, 1=Fraud)
+
+#### Techniques Used
+
+- **Data Integration**: Merged two large datasets with schema harmonization
+- **Imbalanced Learning**:
+  - SMOTE (Synthetic Minority Over-sampling)
+  - Class weight adjustment
+  - Stratified sampling
+- **Feature Engineering**:
+  - Balance difference calculations
+  - Transaction type encoding
+  - Amount normalization
+  - Temporal features
+- **Models**:
+  - Logistic Regression (baseline)
+  - Random Forest
+  - Gradient Boosting (XGBoost/LightGBM)
+  - Neural Networks
+- **Evaluation**:
+  - Precision, Recall, F1-Score
+  - ROC-AUC curve
+  - Confusion Matrix
+  - Cost-sensitive evaluation
+
+#### Key Challenges & Solutions
+
+**Challenge 1: Class Imbalance**
+
+- Fraud represents <1% of transactions
+- **Solution**: SMOTE oversampling + class weights
+
+**Challenge 2: Dataset Size**
+
+- 8M+ transactions require efficient processing
+- **Solution**: Sampling strategies, batch processing
+
+**Challenge 3: Feature Consistency**
+
+- Two datasets with different schemas
+- **Solution**: Column renaming and standardization
+
+**Challenge 4: Real-time Detection**
+
+- Need fast prediction for live transactions
+- **Solution**: Optimized model selection, feature reduction
+
+#### Business Value
+
+**For Financial Institutions:**
+
+- **Fraud Prevention**: Detect suspicious transactions before completion
+- **Cost Savings**: Reduce financial losses from fraud
+- **Customer Protection**: Safeguard customer accounts
+- **Compliance**: Meet regulatory requirements
+
+**For Customers:**
+
+- **Security**: Protected from fraudulent transactions
+- **Trust**: Increased confidence in financial services
+- **Quick Response**: Faster fraud detection and resolution
+
+**Key Metrics:**
+
+- **Precision**: Minimize false alarms (legitimate transactions flagged)
+- **Recall**: Maximize fraud detection (catch all fraudulent transactions)
+- **F1-Score**: Balance between precision and recall
+- **Cost**: Consider financial impact of false positives vs false negatives
+
+#### Fraud Patterns Identified
+
+1. **Zero Balance Transfers**: Accounts drained to zero
+2. **Large Transactions**: Unusually high amounts
+3. **Rapid Succession**: Multiple transactions in short time
+4. **New Accounts**: Recently created accounts with high activity
+5. **Round Numbers**: Suspicious round-number transactions
+
+#### Files
+
+- `PraticalML_Project.ipynb` - Main fraud detection notebook
+- `data/synthetic_mobile_money_transaction_dataset.csv` - MomTSim data
+- `data/Synthetic_Financial_datasets_log.csv` - PaySim data
+
+#### Learning Outcomes
+
+- **Big Data Handling**: Processing millions of records
+- **Imbalanced Classification**: Techniques for rare event detection
+- **Data Integration**: Merging heterogeneous datasets
+- **Financial Domain**: Understanding transaction patterns
+- **Production Considerations**: Real-time prediction requirements
+
 
 ## Skills Demonstrated
 
